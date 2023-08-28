@@ -1,9 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GalloFlix.Models;
+namespace GalloTube.Models;
 
-public class Movie
+public class Video
 {
     [Key]
     public int Id { get; set; }
@@ -22,7 +22,7 @@ public class Movie
 
     [Column(TypeName = "Year")]
     [Required]
-    public Int16 MovieYear { get; set; }
+    public Int16 VideoYear { get; set; }
 
     [Required]
     public Int16 Duration { get; set; }
@@ -44,5 +44,5 @@ public class Movie
     } }
 
     [NotMapped]
-    public List<Genre> Genres { get; set; }
+    public List<Tag> Tags { get; set; }
 }

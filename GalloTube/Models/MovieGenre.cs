@@ -1,17 +1,17 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GalloFlix.Models;
-[Table("MovieGenre")]
-public class MovieGenre
+namespace GalloTube.Models;
+[Table("VideoTag")]
+public class VideoTag
 {
     [Key, Column(Order = 1)]
-    public int MovieId { get; set; }
-    [ForeignKey("MovieId")]
-    public Movie Movie { get; set; }
+    public int VideoId { get; set; }
+    [ForeignKey("VideoId")]
+    public Video Video { get; set; }
 
     [Key, Column(Order = 2)]
-    public byte GenreId { get; set; }
-    [ForeignKey("GenreId")]
-    public Genre Genre { get; set; }
+    public byte TagId { get; set; }
+    [ForeignKey("TagId")]
+    public Tag Tag { get; set; }
 }

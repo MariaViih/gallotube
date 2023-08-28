@@ -1,11 +1,11 @@
 using System.Data;
-using GalloFlix.Interfaces;
-using GalloFlix.Models;
+using GalloTube.Interfaces;
+using GalloTube.Models;
 using MySql.Data.MySqlClient;
 
-namespace GalloFlix.Repositories;
+namespace GalloTube.Repositories;
 
-public class GenreRepository : IGenreRepository
+public class TagRepository : TagRepository
 {
     readonly string connectionString = "server=localhost;port=3306;database=GalloFlixdb;uid=root;pwd=''";
 
@@ -39,35 +39,35 @@ public class GenreRepository : IGenreRepository
         connection.Close();
     }
 
-    public List<Genre> ReadAll()
+    public List<Tag> ReadAll()
     {
         MySqlConnection connection = new(connectionString);
-        string sql = "select * from Genre";
+        string sql = "select * from Tag";
         MySqlCommand command = new(sql, connection)
         {
             CommandType = CommandType.Text
         };
         
-        List<Genre> genres = new();
+        List<Tag> genres = new();
         connection.Open();
         MySqlDataReader reader = command.ExecuteReader();
         while (reader.Read())
         {
-            Genre genre = new()
+            Tag tag = new()
             {
                 Id = reader.GetByte("id"),
                 Name = reader.GetString("name")
             };
-            genres.Add(genre);
+            tags.Add(genre);
         }
         connection.Close();
-        return genres;
+        return tags;
     }
 
-    public Genre ReadById(int? id)
+    public Tag ReadById(int? id)
     {
         MySqlConnection connection = new(connectionString);
-        string sql = "select * from Genre where Id = @Id";
+        string sql = "select * from Tag where Id = @Id";
         MySqlCommand command = new(sql, connection)
         {
             CommandType = CommandType.Text
@@ -79,19 +79,19 @@ public class GenreRepository : IGenreRepository
         reader.Read();
         if (reader.HasRows)
         {
-            Genre genre = new()
+            Tag tag = new()
             {
                 Id = reader.GetByte("id"),
                 Name = reader.GetString("name")
             };
             connection.Close();
-            return genre;
+            return tag;
         }
         connection.Close();
         return null;
     }
 
-    public void Update(Genre model)
+    public void Update(Tag model)
     {
         MySqlConnection connection = new(connectionString);
         string sql = "update Genre set Name = @Name where Id = @Id";

@@ -1,4 +1,4 @@
-namespace GalloFlix.Models;
+namespace GalloTube.Models;
 
 public class ErrorViewModel
 {

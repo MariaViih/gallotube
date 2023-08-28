@@ -13,5 +13,5 @@ public class Genre
     [Required(ErrorMessage = "O nome do Gênero é obrigatório")]
     [StringLength(30, ErrorMessage = "O Nome deve possuir no máximo 30 caracteres")]
     public string Name { get; set; }    
-    public ICollection<MovieGenre> Movies { get; set; }
+    public ICollection<VideoTag> Movies { get; set; }
 }

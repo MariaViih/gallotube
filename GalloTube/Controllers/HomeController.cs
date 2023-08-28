@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using GalloFlix.Models;
-using GalloFlix.Interfaces;
+using GalloTube.Models;
+using GalloTube.Interfaces;
 
 
 namespace GalloFlix.Controllers;
@@ -9,24 +9,24 @@ namespace GalloFlix.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-    private readonly IMovieRepository _movieRepository;
+    private readonly IVideoRepository _videoRepository;
 
     public HomeController(ILogger<HomeController> logger, IMovieRepository movieRepository)
     {
         _logger = logger;
-        _movieRepository = movieRepository;
+        _videoRepository = videoRepository;
     }
 
     public IActionResult Index()
     {
-        var movies = _movieRepository.ReadAllDetailed();
-        return View(movies);
+        var videos = _videoRepository.ReadAllDetailed();
+        return View(videos);
     }
 
-    public IActionResult Movie(int id)
+    public IActionResult Video(int id)
     {
-        var movie  = _movieRepository.ReadByIdDetailed(id);
-        return View(movie);
+        var video  = _videoRepository.ReadByIdDetailed(id);
+        return View(video);
     }
 
     public IActionResult Privacy()

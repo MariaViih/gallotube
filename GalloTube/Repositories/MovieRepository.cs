@@ -1,14 +1,14 @@
 using System.Data;
-using GalloFlix.Interfaces;
-using GalloFlix.Models;
+using GalloTube.Interfaces;
+using GalloTube.Models;
 using MySql.Data.MySqlClient;
 
-namespace GalloFlix.Repositories;
+namespace GalloTube.Repositories;
 
-public class MovieRepository : IMovieRepository
+public class VideoRepository : VideoRepository
 {
     readonly string connectionString = "server=localhost;port=3306;database=GalloFlixdb;uid=root;pwd=''";
-    readonly IMovieGenreRepository _movieGenreRepository;
+    readonly VideoTagRepository _videoTagRepository;
 
     public MovieRepository(IMovieGenreRepository movieGenreRepository)
     {
